@@ -129,17 +129,17 @@ void setupsignals()
 #endif
 
 	struct sigaction sa;
-	for (unsigned int i = 0; i < LENGTH(blocks); i++) {
-		if (blocks[i].signal > 0) {
-			signal(SIGMINUS+blocks[i].signal, sighandler);
-			sigaddset(&sa.sa_mask, SIGRTMIN+blocks[i].signal); // ignore signal when handling SIGUSR1
-		}
 	sa.sa_sigaction = buttonhandler;
 	sa.sa_flags = SA_SIGINFO;
-	sigaction(SIGUSR1, &sa, NULL);
+	sigemptyset(&sa.sa_mask);
+	
+	for (unsigned int i = 0; i < LENGTH(blocks); i++) {
+		if (blocks[i].signal > 0) {
+			sigaction(SIGRTMIN + blocks[i].signal, &sa, NULL);
+		}
 	}
-
 }
+
 
 int getstatus(char *str, char *last)
 {
