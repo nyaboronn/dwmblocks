@@ -5,7 +5,8 @@ static const Block blocks[] = {
     {"",        "~/scripts/dwmblocks_volumen",                                            1,                  2},
     {"󰃭 ",	     "date '+%a %d/%m/%Y'",                               					   5,                  3},
     {"󰥔 ",      "date '+%H:%M'",                                                          5,                  4},
-	{" ", 	    "~/scripts/dwmblocks_bateria", 							                  30, 	              5}
+	{" ", 	    "~/scripts/dwmblocks_bateria", 							                  30, 	              5},
+    {"     ",      "echo ''",                                                             60,                 0}
 };
 
 //sets delimiter between status commands. NULL character ('\0') means no delimiter.
